@@ -21,10 +21,11 @@
 package main
 
 import (
+	"bytes"
 	"log"
 	"os"
 	"strings"
-	"strconv"
+	"regexp"
 	"github.com/diamondburned/arikawa/bot"
 	"github.com/diamondburned/arikawa/gateway"
 	"github.com/diamondburned/arikawa/session"
@@ -89,15 +90,18 @@ func main() {
 		"wiki#": "https://gitlab.com/postmarketOS/wiki/issues/",
 	}
 
+	shortcutmapregex := regexp.MustCompile("(?i)(art[#!]|bpo[#!]|bot[#!]|chrg[#!]|lnx[#!]|mrh[#!]|osk[#!]|pma[#!]|pmb[#!]|org[#!]|wiki#)(\\d+)")
+	
 	syncer.AddHandler(func(c *gateway.MessageCreateEvent) {
-		for shortcut, url := range shortcutmap {
-			if strings.HasPrefix(c.Content, shortcut) {
-				code, err := strconv.Atoi(strings.TrimPrefix(c.Content, shortcut))
-				if err != nil {
-					return
-				}
-				syncer.SendMessage(c.ChannelID, url + strconv.Itoa(code), nil)
+		matches := shortcutmapregex.FindAllStringSubmatch(c.Content, -1)
+		if matches != nil {
+			var buffer bytes.Buffer
+			for _, match := range matches {
+				log.Printf("<%[1]s> %[3]s (%[2]s)\n", c.Author.Username, c.Author.ID, c.Content)
+				buffer.WriteString(shortcutmap[strings.ToLower(match[1])] + match[2] + " ")
 			}
+			message := strings.TrimSuffix(buffer.String(), " ")
+			syncer.SendMessage(c.ChannelID, message, nil)
 		}
 	})
 
