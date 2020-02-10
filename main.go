@@ -41,11 +41,13 @@ func main() {
 	if err != nil {
 		log.Fatalln("Session failed:", err)
 	}
-	
+
 	if err := syncer.Open(); err != nil {
 		log.Fatalln("Failed to connect:", err)
 	}
-	
+
+	defer syncer.Close()
+
 	u, err := syncer.Me()
 	if err != nil {
 		log.Fatalln("Failed to get myself:", err)
@@ -92,7 +94,7 @@ func main() {
 			if strings.HasPrefix(c.Content, shortcut) {
 				code, err := strconv.Atoi(strings.TrimPrefix(c.Content, shortcut))
 				if err != nil {
-					// Yeah, it's not the right prefix or whatever.
+					return
 				}
 				syncer.SendMessage(c.ChannelID, url + strconv.Itoa(code), nil)
 			}
