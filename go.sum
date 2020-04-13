@@ -1,5 +1,5 @@
-github.com/diamondburned/arikawa v0.2.0 h1:ym+oPP3x88w+K4GF8jCAx2NQTx0vF2UiXIsVh36FeNc=
-github.com/diamondburned/arikawa v0.2.0/go.mod h1:4twL4clERjOU7nOWQm1p1v1tMZ8aWBe5TBtF2BJgmnw=
+github.com/diamondburned/arikawa v0.3.0 h1:She6hEpe2ifh7ZQP2DXuajobHdR5n88RunderuC7PqU=
+github.com/diamondburned/arikawa v0.3.0/go.mod h1:4twL4clERjOU7nOWQm1p1v1tMZ8aWBe5TBtF2BJgmnw=
 github.com/gorilla/schema v1.1.0 h1:CamqUDOFUBqzrvxuz2vEwo8+SUdwsluFh7IlzJh30LY=
 github.com/gorilla/schema v1.1.0/go.mod h1:kgLaKoK1FELgZqMAVxx/5cbj0kT+57qxUrAlIO2eleU=
 github.com/gorilla/websocket v1.4.2 h1:+/TMaTYc4QFitKJxsQ7Yye35DkWvkdLcvGKqM+x0Ufc=
