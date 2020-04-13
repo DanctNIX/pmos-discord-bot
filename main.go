@@ -3,7 +3,7 @@
 //
 // Copyright (C) 2017 Tulir Asokan
 // Copyright (C) 2018-2019 Luca Weiss
-// Copyright (C) 2020 Danct12
+// Copyright (C) 2020 DanctNIX Community
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
